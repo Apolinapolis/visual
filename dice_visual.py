@@ -4,10 +4,10 @@ from plotly import offline
 
 #Создаю кубик D6
 die_1 = Die()
-die_2 = Die()
+die_2 = Die(10)
 # Моделируею серию бросков и сохраняю результаты в списке
 results = []
-for roll_num in range(1000):
+for roll_num in range(50000):
     result = die_1.roll() + die_2.roll()
     results.append(result)
 # Анализирую результаты
@@ -22,6 +22,6 @@ x_values = list(range(2, max_result + 1))
 data = [Bar(x=x_values, y = frequencies)]
 x_axis_config = {'title': 'Result', 'dtick': 1}
 y_axis_config = {'title': 'Frequency of Result'}
-my_layout = Layout(title='Results of rolling two D6 1000 times',
+my_layout = Layout(title='Results of rolling а D6 and a D10 50,000 times',
                    xaxis=x_axis_config, yaxis=y_axis_config)
-offline.plot({'data': data, 'layout': my_layout}, filename='d6_d6.html')
+offline.plot({'data': data, 'layout': my_layout}, filename='d6_d10.html')
